@@ -46,9 +46,23 @@
                 Terdapat 40 soal pilihan ganda seputar Ciri Makhluk Hidup, Pengelompokan, Pertumbuhan & Perkembangan, serta Wujud Benda. Jawab satu per satu dan lihat pembahasannya secara langsung!
             </p>
 
-            <button onclick="startQuiz()" class="w-full sm:w-auto px-8 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-indigo-600/30">
-                Mulai Kuis Sekarang 🚀
-            </button>
+            <div id="resume-container" class="hidden mb-4">
+                <p id="resume-info" class="text-xs text-amber-400 mb-3"></p>
+                <div class="flex flex-col sm:flex-row justify-center gap-3">
+                    <button onclick="resumeQuiz()" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition shadow-lg shadow-emerald-600/30">
+                        Lanjutkan Kuis 💾
+                    </button>
+                    <button onclick="startQuiz(true)" class="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-slate-200 font-semibold rounded-xl transition">
+                        Mulai Baru 🔄
+                    </button>
+                </div>
+            </div>
+
+            <div id="start-btn-container">
+                <button onclick="startQuiz(false)" class="w-full sm:w-auto px-8 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-indigo-600/30">
+                    Mulai Kuis Sekarang 🚀
+                </button>
+            </div>
         </div>
 
         <!-- Quiz Screen -->
@@ -110,8 +124,8 @@
                     <span id="correct-count" class="text-2xl font-black text-emerald-400">0</span>
                 </div>
                 <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/50">
-                    <span class="text-xs text-slate-400 block mb-1">Skor Akhir</span>
-                    <span id="final-percentage" class="text-2xl font-black text-indigo-400">0%</span>
+                    <span class="text-xs text-slate-400 block mb-1">Skor Tertinggi</span>
+                    <span id="high-score" class="text-2xl font-black text-indigo-400">0</span>
                 </div>
             </div>
 
@@ -443,11 +457,52 @@
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
 
-        function startQuiz() {
+        // Check localStorage when page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedState = localStorage.getItem('scienceQuizState');
+            if (savedState) {
+                const parsed = JSON.parse(savedState);
+                // If quiz was in progress (not completed)
+                if (parsed.currentIdx > 0 && parsed.currentIdx < quizData.length) {
+                    document.getElementById('resume-container').classList.remove('hidden');
+                    document.getElementById('start-btn-container').classList.add('hidden');
+                    document.getElementById('resume-info').textContent = `Kamu memiliki kuis yang belum selesai (Soal ke-${parsed.currentIdx + 1} dari 40).`;
+                }
+            }
+        });
+
+        function saveProgress() {
+            const state = {
+                currentIdx,
+                score,
+                userAnswers
+            };
+            localStorage.setItem('scienceQuizState', JSON.stringify(state));
+        }
+
+        function startQuiz(reset = false) {
+            if (reset) {
+                localStorage.removeItem('scienceQuizState');
+                currentIdx = 0;
+                score = 0;
+                userAnswers = new Array(quizData.length).fill(null);
+            }
             welcomeScreen.classList.add('hidden');
             quizScreen.classList.remove('hidden');
             badgeScore.classList.remove('hidden');
+            headerScore.textContent = score;
             loadQuestion();
+        }
+
+        function resumeQuiz() {
+            const savedState = localStorage.getItem('scienceQuizState');
+            if (savedState) {
+                const parsed = JSON.parse(savedState);
+                currentIdx = parsed.currentIdx;
+                score = parsed.score;
+                userAnswers = parsed.userAnswers;
+            }
+            startQuiz(false);
         }
 
         function loadQuestion() {
@@ -498,6 +553,9 @@
 
             prevBtn.disabled = currentIdx === 0;
             nextBtn.textContent = currentIdx === quizData.length - 1 ? 'Lihat Hasil 🏆' : 'Selanjutnya →';
+            
+            // Save state on every question load
+            saveProgress();
         }
 
         function handleSelect(selectedIdx) {
@@ -510,6 +568,7 @@
                 headerScore.textContent = score;
             }
 
+            saveProgress();
             loadQuestion();
         }
 
@@ -552,7 +611,14 @@
 
             document.getElementById('correct-count').textContent = `${score} / 40`;
             const percentage = Math.round((score / quizData.length) * 100);
-            document.getElementById('final-percentage').textContent = `${percentage}%`;
+
+            // Handle High Score storage
+            let highScore = JSON.parse(localStorage.getItem('scienceQuizHighScore')) || 0;
+            if (score > highScore) {
+                highScore = score;
+                localStorage.setItem('scienceQuizHighScore', JSON.stringify(highScore));
+            }
+            document.getElementById('high-score').textContent = `${highScore} / 40`;
 
             const evalEl = document.getElementById('result-eval');
             if (percentage >= 85) {
@@ -562,9 +628,13 @@
             } else {
                 evalEl.textContent = "Tetap semangat! Pelajari kembali pembahasannya dan coba ulangi kuis ini! 💪";
             }
+
+            // Clear saved quiz progress since it's completed
+            localStorage.removeItem('scienceQuizState');
         }
 
         function restartQuiz() {
+            localStorage.removeItem('scienceQuizState');
             currentIdx = 0;
             score = 0;
             userAnswers = new Array(quizData.length).fill(null);
@@ -572,6 +642,10 @@
 
             resultScreen.classList.add('hidden');
             welcomeScreen.classList.remove('hidden');
+            
+            // Hide resume container if active
+            document.getElementById('resume-container').classList.add('hidden');
+            document.getElementById('start-btn-container').classList.remove('hidden');
         }
     </script>
 </body>
