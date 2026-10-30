@@ -458,7 +458,7 @@
 
             // Update Progress Bar
             const progress = ((currentIdx + 1) / quizData.length) * 100;
-            progressBar.style.width = ${progress}%;
+            progressBar.style.width = `${progress}%`;
 
             optionsContainer.innerHTML = '';
             explanationBox.classList.add('hidden');
@@ -524,7 +524,7 @@
             } else {
                 explanationBox.className = "p-4 rounded-xl border bg-rose-950/40 border-rose-500/40 text-rose-200 mb-6";
                 feedbackIcon.textContent = "💡";
-                feedbackTitle.textContent = Jawaban Kurang Tepat (Kunci: ${String.fromCharCode(65 + q.ans)});
+                feedbackTitle.textContent = `Jawaban Kurang Tepat (Kunci: ${String.fromCharCode(65 + q.ans)})`;
             }
 
             explanationText.textContent = q.exp;
@@ -550,9 +550,9 @@
             quizScreen.classList.add('hidden');
             resultScreen.classList.remove('hidden');
 
-            document.getElementById('correct-count').textContent = ${score} / 40;
+            document.getElementById('correct-count').textContent = `${score} / 40`;
             const percentage = Math.round((score / quizData.length) * 100);
-            document.getElementById('final-percentage').textContent = ${percentage}%;
+            document.getElementById('final-percentage').textContent = `${percentage}%`;
 
             const evalEl = document.getElementById('result-eval');
             if (percentage >= 85) {
