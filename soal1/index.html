@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis Sains Interaktif Kelas 3 SD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+
+    <!-- Header Section -->
+    <header class="border-b border-slate-800 bg-slate-950/50 backdrop-blur sticky top-0 z-10">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-white text-xl shadow-lg shadow-indigo-500/30">
+                    🔬
+                </div>
+                <div>
+                    <h1 class="text-base font-bold text-white leading-tight">Olimpiade Sains Kelas 3 SD</h1>
+                    <p class="text-xs text-slate-400">Simulasi & Latihan Interaktif</p>
+                </div>
+            </div>
+            <div id="badge-score" class="hidden bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-lg text-xs font-semibold text-indigo-400">
+                Skor: <span id="header-score" class="text-white">0</span> / 40
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 py-6 w-full flex-grow flex flex-col justify-center">
+
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 md:p-10 text-center shadow-2xl relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute -left-10 -top-10 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl"></div>
+
+            <span class="inline-block px-3 py-1 bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 rounded-full text-xs font-semibold tracking-wider uppercase mb-4">
+                Soal Pilihan Ganda Interaktif
+            </span>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-3">Siap Menguji Kemampuan Sainsmu?</h2>
+            <p class="text-slate-400 text-sm max-w-lg mx-auto mb-8 leading-relaxed">
+                Terdapat 40 soal pilihan ganda seputar Ciri Makhluk Hidup, Pengelompokan, Pertumbuhan & Perkembangan, serta Wujud Benda. Jawab satu per satu dan lihat pembahasannya secara langsung!
+            </p>
+
+            <button onclick="startQuiz()" class="w-full sm:w-auto px-8 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-indigo-600/30">
+                Mulai Kuis Sekarang 🚀
+            </button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="hidden bg-slate-800/90 border border-slate-700 rounded-2xl p-5 md:p-8 shadow-2xl">
+            <!-- Top Bar Progress -->
+            <div class="flex justify-between items-center text-xs font-semibold text-slate-400 mb-2">
+                <span>Soal Ke- <span id="current-question-num" class="text-indigo-400">1</span> dari 40</span>
+                <span id="category-tag" class="px-2.5 py-1 bg-slate-700 text-slate-300 rounded-md">Ciri Makhluk Hidup</span>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="w-full bg-slate-700 h-2 rounded-full mb-6 overflow-hidden">
+                <div id="progress-bar" class="bg-indigo-500 h-full w-0 transition-all duration-300"></div>
+            </div>
+
+            <!-- Question Box -->
+            <div class="mb-6">
+                <h3 id="question-text" class="text-lg md:text-xl font-bold text-white leading-relaxed">
+                    <!-- Text Pertanyaan -->
+                </h3>
+            </div>
+
+            <!-- Options Container -->
+            <div id="options-container" class="space-y-3 mb-6">
+                <!-- Options button rendered by JavaScript -->
+            </div>
+
+            <!-- Feedback / Explanation Box -->
+            <div id="explanation-box" class="hidden p-4 rounded-xl border transition-all duration-200 mb-6">
+                <div class="flex items-center space-x-2 mb-1.5">
+                    <span id="feedback-icon" class="text-lg"></span>
+                    <h4 id="feedback-title" class="font-bold text-sm"></h4>
+                </div>
+                <p id="explanation-text" class="text-xs md:text-sm leading-relaxed text-slate-300"></p>
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="flex justify-between items-center pt-4 border-t border-slate-700/60">
+                <button id="prev-btn" onclick="prevQuestion()" class="px-4 py-2.5 bg-slate-700 hover:bg-slate-600 text-slate-200 rounded-xl text-xs font-semibold transition disabled:opacity-40 disabled:cursor-not-allowed">
+                    ← Sebelumnya
+                </button>
+                <button id="next-btn" onclick="nextQuestion()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition shadow-md shadow-indigo-600/20">
+                    Selanjutnya →
+                </button>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="hidden bg-slate-800/80 border border-slate-700 rounded-2xl p-6 md:p-10 text-center shadow-2xl">
+            <div class="w-20 h-20 bg-amber-500/20 border border-amber-500/30 text-amber-400 rounded-2xl flex items-center justify-center mx-auto mb-4 text-3xl shadow-inner">
+                🏆
+            </div>
+            <h2 class="text-2xl font-extrabold text-white mb-1">Kuis Selesai!</h2>
+            <p class="text-xs text-slate-400 mb-6">Berikut adalah rekapitulasi hasil jawaban kamu:</p>
+
+            <div class="grid grid-cols-2 gap-4 max-w-xs mx-auto mb-6">
+                <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/50">
+                    <span class="text-xs text-slate-400 block mb-1">Jawaban Benar</span>
+                    <span id="correct-count" class="text-2xl font-black text-emerald-400">0</span>
+                </div>
+                <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/50">
+                    <span class="text-xs text-slate-400 block mb-1">Skor Akhir</span>
+                    <span id="final-percentage" class="text-2xl font-black text-indigo-400">0%</span>
+                </div>
+            </div>
+
+            <p id="result-eval" class="text-sm font-medium text-slate-300 max-w-md mx-auto mb-8"></p>
+
+            <button onclick="restartQuiz()" class="px-8 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl transition shadow-lg shadow-indigo-600/30">
+                Ulangi Kuis 🔄
+            </button>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-4 border-t border-slate-800 text-center text-xs text-slate-500">
+        Simulasi Olimpiade Sains Kelas 3 SD • Interaktif & Terstruktur
+    </footer>
+
+    <script>
+        const quizData = [
+            // Category 1: Ciri Makhluk Hidup (1-10)
+            {
+                cat: "Ciri Makhluk Hidup",
+                q: "Makhluk hidup memerlukan makanan untuk kelangsungan hidupnya. Kelompok hewan di bawah ini yang seluruhnya merupakan pemakan tumbuhan (herbivora) adalah...",
+                opt: ["Kelinci, sapi, dan gajah", "Singa, harimau, dan serigala", "Ayam, babi, dan simpanse", "Kadal, ular, dan elang"],
+                ans: 0,
+                exp: "Kelinci, sapi, dan gajah adalah herbivora (pemakan tumbuhan). Singa/harimau tergolong karnivora, sedangkan ayam/babi tergolong omnivora."
+            },
+            {
+                cat: "Ciri Makhluk Hidup",
+                q: "Manakah di antara ciri-ciri berikut yang hanya dimiliki oleh makhluk hidup (hewan dan tumbuhan) dan tidak dimiliki oleh benda mati?",
+                opt: ["Dapat berpindah tempat jika tertiup angin", "Mengalami pertumbuhan, perkembangan, dan bernapas", "Memiliki berat dan menempati ruang", "Terbuat dari bahan yang keras atau lunak"],
+                ans: 1,
+                exp: "Hanya makhluk hidup yang bernapas, tumbuh, berkembang, serta membutuhkan nutrisi dan berkembang biak."
+            },
+            {
+                cat: "Ciri Makhluk Hidup",
+                q: "Saat kamu menyentuh daun tumbuhan putri malu (Mimosa pudica), daun tersebut akan segera mengatup. Hal ini membuktikan salah satu ciri makhluk hidup, yaitu...",
+                opt: ["Memerlukan nutrisi", "Peka terhadap rangsang (iritabilitas)", "Berpindah tempat", "Mengeluarkan zat sisa"],
+                ans: 1,
+                exp: "Respon mengatup pada daun putri malu saat disentuh merupakan bukti ciri peka terhadap rangsangan (iritabilitas)."
+            },
+            {
+                cat: "Ciri Makhluk Hidup",
+                q: "Tumbuhan hijau dapat membuat makanannya sendiri melalui proses fotosintesis. Bahan utama yang dibutuhkan tumbuhan untuk fotosintesis adalah...",
+                opt: ["Cahaya matahari, air, dan karbon dioksida", "Oksigen, gula, dan pupuk urea", "Tanah tebal, minyak, dan angin", "Es batu, garam, dan nitrogen"],
+                ans: 0,
+                exp: "Fotosintesis membutuhkan energi cahaya matahari, air (H₂O) dari tanah, dan karbon dioksida (CO₂) dari udara."
+            },
+            {
+                cat: "Ciri Makhluk Hidup",
+                q: "Hewan seperti burung memiliki alat pernapasan khusus yang membantunya bernapas saat terbang tinggi di udara, yaitu...",
+                opt: ["Paru-paru dan trakea", "Insang dan kulit", "Pundi-pundi udara (kantong udara)", "Stomata dan lentisel"],
+                ans: 2,
+                exp: "Pundi-pundi udara berfungsi menyimpan udara yang digunakan burung saat terbang ketika paru-paru tidak dapat bekerja maksimal."
+            },
+            {
+                cat: "Ciri Makhluk Hidup",
+                q: "Bagian tumbuhan yang berfungsi menyerap air dan garam mineral dari dalam tanah serta menopang berdirinya tumbuhan adalah...",
+                opt: ["Daun", "Batang", "Akar", "Bunga"],
+                ans: 2,
+                exp: "Akar berfungsi menyerap air dan hara mineral dari dalam tanah sekaligus menancapkan tumbuhan ke tanah."
+            },
+            {
+                cat: "Ciri Makhluk Hidup",
+                q: "Sepotong batu diletakkan di dalam kotak selama bertahun-tahun dan ukurannya tidak pernah berubah. Hal ini terjadi karena batu...",
+                opt: ["Bernapas sangat lambat", "Tidak memerlukan makanan dan tidak tumbuh", "Mengalami perkembangan tanpa pertumbuhan", "Sedang beradaptasi dengan lingkungan"],
+                ans: 1,
+                exp: "Batu adalah benda mati, sehingga tidak mengalami proses biologis seperti metabolisme, pertumbuhan, atau perkembangan."
+            },
+            {
+                cat: "Ciri Makhluk Hidup",
+                q: "Alat pernapasan pada tumbuhan yang terdapat di permukaan daun adalah...",
+                opt: ["Lentisel", "Stomata", "Kapiler", "Klorofil"],
+                ans: 1,
+                exp: "Stomata (mulut daun) adalah celah khusus di daun yang berfungsi sebagai organ pertukaran gas pernapasan tumbuhan."
+            },
+            {
+                cat: "Ciri Makhluk Hidup",
+                q: "Ikan bernapas di dalam air menggunakan insang, sedangkan paus dan lumba-lumba yang hidup di air bernapas menggunakan...",
+                opt: ["Insang", "Kulit", "Paru-paru", "Trakea"],
+                ans: 2,
+                exp: "Paus dan lumba-lumba adalah mamalia air, sehingga mereka bernapas menggunakan paru-paru dan sesekali muncul ke permukaan air untuk mengambil udara."
+            },
+            {
+                cat: "Ciri Makhluk Hidup",
+                q: "Tujuan utama makhluk hidup melakukan berkembang biak (reproduksi) adalah...",
+                opt: ["Menambah berat tubuh", "Memperoleh energi baru", "Melestarikan jenisnya agar tidak punah", "Menyesuaikan diri dengan cuaca"],
+                ans: 2,
+                exp: "Perkembangbiakan bertujuan untuk menghasilkan keturunan agar jenis/spesiesnya tidak mengalami kepunahan."
+            },
+
+            // Category 2: Pengelompokan Makhluk Hidup (11-20)
+            {
+                cat: "Pengelompokan Makhluk Hidup",
+                q: "Hewan yang mengonsumsi tumbuhan sekaligus daging/hewan lain disebut omnivora. Contoh hewan yang termasuk kelompok omnivora adalah...",
+                opt: ["Ayam, tikus, dan babi", "Sapi, kambing, dan kuda", "Harimau, buaya, dan serigala", "Burung elang, hiu, dan ular"],
+                ans: 0,
+                exp: "Ayam, tikus, dan babi memakan bahan dari tumbuhan maupun hewan (omnivora/pemakan segalanya)."
+            },
+            {
+                cat: "Pengelompokan Makhluk Hidup",
+                q: "Tumbuhan paku-pakuan dan lumut dikelompokkan sebagai tumbuhan yang tidak berbunga. Kedua tumbuhan ini berkembang biak menggunakan...",
+                opt: ["Biji", "Spora", "Tunas", "Umbi batang"],
+                ans: 1,
+                exp: "Tumbuhan paku dan lumut tidak menghasilkan bunga/biji, melainkan menggunakan spora untuk bereproduksi."
+            },
+            {
+                cat: "Pengelompokan Makhluk Hidup",
+                q: "Hewan bertulang belakang yang hidup di darat dan di air, bernapas menggunakan insang saat berudu dan menggunakan paru-paru serta kulit saat dewasa digolongkan ke dalam kelompok...",
+                opt: ["Reptil", "Amfibi", "Mamalia", "Pisces"],
+                ans: 1,
+                exp: "Amfibi (seperti katak) hidup dua alam dan mengalami perubahan alat pernapasan dari insang menjadi paru-paru/kulit."
+            },
+            {
+                cat: "Pengelompokan Makhluk Hidup",
+                q: "Hewan bersisik, berkulit kering, bertelur di darat, dan bernapas dengan paru-paru diklasifikasikan sebagai...",
+                opt: ["Amfibi", "Mamalia", "Reptil", "Aves"],
+                ans: 2,
+                exp: "Reptil (seperti ular, kadal, buaya) memiliki kulit bersisik kering dan bernapas dengan paru-paru."
+            },
+            {
+                cat: "Pengelompokan Makhluk Hidup",
+                q: "Manakah kelompok benda di bawah ini yang seluruhnya merupakan benda yang tidak pernah hidup?",
+                opt: ["Daun kering, cangkang kerang, dan bulu ayam", "Kelereng kaca, sendok baja, dan botol plastik", "Meja kayu, kertas koran, dan kemeja katun", "Sepatu kulit, tulang ikan, dan sweter wol"],
+                ans: 1,
+                exp: "Kelereng kaca, sendok baja, dan botol plastik terbuat dari bahan anorganik/sintetis yang tidak pernah hidup."
+            },
+            {
+                cat: "Pengelompokan Makhluk Hidup",
+                q: "Kaktus dikelompokkan sebagai tumbuhan xerofit karena mampu bertahan hidup di habitat yang sangat kering seperti gurun. Ciri khusus kaktus adalah...",
+                opt: ["Daun lebar dan tipis", "Batang tebal yang menyimpan air dan daun berbentuk duri", "Akar pendek dan lunak", "Bunga yang mekar setiap hari"],
+                ans: 1,
+                exp: "Batang kaktus tebal berdaging untuk menyimpan air, dan daunnya mereduksi menjadi duri untuk mengurangi penguapan."
+            },
+            {
+                cat: "Pengelompokan Makhluk Hidup",
+                q: "Lumba-lumba dan paus hidup di laut, namun keduanya bukan tergolong ikan (Pisces) melainkan mamalia karena...",
+                opt: ["Bernapas dengan insang dan bertelur", "Memiliki sisik yang licin", "Bernapas dengan paru-paru dan melahirkan/menyusui anaknya", "Dapat berenang sangat cepat"],
+                ans: 2,
+                exp: "Lumba-lumba dan paus melahirkan, menyusui anaknya, serta bernapas dengan paru-paru (Ciri utama mamalia)."
+            },
+            {
+                cat: "Pengelompokan Makhluk Hidup",
+                q: "Pohon mangga, jagung, dan kacang tanah dikelompokkan ke dalam tumbuhan berbiji (Spermatophyta). Bagian tumbuhan yang berubah menjadi buah berisi biji setelah penyerbukan adalah...",
+                opt: ["Daun", "Bunga (bakal buah)", "Batang", "Akar"],
+                ans: 1,
+                exp: "Penyerbukan dan pembuahan pada bunga menyebabkan bakal buah tumbuh membesar menjadi buah yang berisi biji."
+            },
+            {
+                cat: "Pengelompokan Makhluk Hidup",
+                q: "Kelompok hewan pemakan daging (karnivora) umumnya memiliki gigi khusus yang tajam dan kuat untuk mencarik mangsa, yaitu...",
+                opt: ["Gigi seri", "Gigi geraham", "Gigi taring", "Gigi susu"],
+                ans: 2,
+                exp: "Gigi taring yang runcing dan tajam berfungsi utama untuk merobek dan mencabik daging mangsa."
+            },
+            {
+                cat: "Pengelompokan Makhluk Hidup",
+                q: "Hewan yang tidak memiliki tulang belakang disebut invertebrata/avertebrata. Contoh hewan invertebrata adalah...",
+                opt: ["Cacing, ulat, dan gurita", "Katak, ular, dan kadal", "Burung, kelelawar, dan ayam", "Sapi, kambing, dan kelinci"],
+                ans: 0,
+                exp: "Cacing, ulat, dan gurita tergolong invertebrata karena tubuhnya tidak ditopang oleh tulang belakang."
+            },
+
+            // Category 3: Pertumbuhan dan Perkembangan (21-30)
+            {
+                cat: "Pertumbuhan & Perkembangan",
+                q: "Proses bertambahnya ukuran tubuh (seperti tinggi, berat, dan volume) pada makhluk hidup yang dapat diukur dengan angka disebut...",
+                opt: ["Perkembangan", "Pertumbuhan", "Metamorfosis", "Adaptasi"],
+                ans: 1,
+                exp: "Pertumbuhan bersifat kuantitatif (dapat diukur dengan satuan angka seperti cm atau kg) dan bersifat tidak dapat balik (irreversible)."
+            },
+            {
+                cat: "Pertumbuhan & Perkembangan",
+                q: "Urutan tahapan pertumbuhan dan perkembangan pada manusia yang benar setelah lahir adalah...",
+                opt: ["Bayi → Anak-anak → Remaja → Dewasa", "Anak-anak → Bayi → Remaja → Dewasa", "Remaja → Bayi → Anak-anak → Dewasa", "Bayi → Remaja → Anak-anak → Dewasa"],
+                ans: 0,
+                exp: "Siklus perkembangan manusia dari lahir dimulai dari fase bayi, tumbuh menjadi anak-anak, remaja, lalu dewasa."
+            },
+            {
+                cat: "Pertumbuhan & Perkembangan",
+                q: "Perubahan kecakapan, kematangan fungsi organ tubuh, serta kemampuan berjalan atau berbicara pada anak merupakan contoh dari...",
+                opt: ["Pertumbuhan", "Perkembangan", "Penuaan", "Penyusutan"],
+                ans: 1,
+                exp: "Perkembangan mencakup kualitatif berupa pematangan fungsi organ tubuh dan bertambahnya kecakapan/keterampilan."
+            },
+            {
+                cat: "Pertumbuhan & Perkembangan",
+                q: "Urutan metamorfosis sempurna pada siklus hidup kupu-kupu yang benar adalah...",
+                opt: ["Telur → Nimfa → Pupa → Dewasa", "Telur → Larva (Ulat) → Pupa (Kepompong) → Dewasa (Imago)", "Telur → Pupa → Larva → Dewasa", "Larva → Telur → Pupa → Dewasa"],
+                ans: 1,
+                exp: "Tahap metamorfosis sempurna kupu-kupu secara berurutan adalah Telur → Larva (ulat) → Pupa (kepompong) → Imago (dewasa)."
+            },
+            {
+                cat: "Pertumbuhan & Perkembangan",
+                q: "Katak mengalami metamorfosis sempurna dalam hidupnya. Alat pernapasan katak saat berada pada fase berudu/kecebong adalah...",
+                opt: ["Paru-paru", "Insang", "Kulit", "Trakea"],
+                ans: 1,
+                exp: "Saat masih berbentuk berudu di air, katak bernapas dengan insang sebelum tumbuh paru-paru saat dewasa."
+            },
+            {
+                cat: "Pertumbuhan & Perkembangan",
+                q: "Belalang dan kecoak mengalami metamorfosis tidak sempurna karena tidak melalui fase...",
+                opt: ["Telur", "Nimfa", "Pupa (Kepompong)", "Dewasa"],
+                ans: 2,
+                exp: "Metamorfosis tidak sempurna hanya melalui 3 tahap: Telur → Nimfa (hewan muda) → Dewasa (tanpa melewati tahap pupa/kepompong)."
+            },
+            {
+                cat: "Pertumbuhan & Perkembangan",
+                q: "Biji kacang hijau yang ditanam di tempat basah akan bertunas dan tumbuh akar. Faktor luar yang sangat dibutuhkan biji untuk mulai berkecambah adalah...",
+                opt: ["Cahaya, air, dan suhu yang sesuai", "Garam dapur dan minyak", "Pupuk sintetis tebal", "Udara dingin di bawah nol derajat"],
+                ans: 0,
+                exp: "Perkecambahan biji sangat dipengaruhi oleh pasokan air yang cukup, kelembapan/suhu yang pas, serta cahaya."
+            },
+            {
+                cat: "Pertumbuhan & Perkembangan",
+                q: "Ciri utama yang membedakan pertumbuhan (growth) dan perkembangan (development) adalah...",
+                opt: ["Pertumbuhan bersifat kualitatif, perkembangan bersifat kuantitatif", "Pertumbuhan dapat diukur angka (kuantitatif), perkembangan tidak dapat diukur angka (kualitatif)", "Pertumbuhan terjadi pada benda mati, perkembangan pada makhluk hidup", "Pertumbuhan dapat balik (reversible), perkembangan tidak dapat balik"],
+                ans: 1,
+                exp: "Pertumbuhan terukur dengan angka (kuantitatif), sedangkan perkembangan diukur dengan tingkat pematangan/kemampuan (kualitatif)."
+            },
+            {
+                cat: "Pertumbuhan & Perkembangan",
+                q: "Ayam dan bebek berkembang biak dengan cara bertelur (ovipar). Di dalam telur, calon anak hewan berkembang dengan memperoleh nutrisi dari...",
+                opt: ["Makanan dari luar yang disuntikkan", "Kuning telur dan putih telur", "Udara di dalam tanah", "Air hujan"],
+                ans: 1,
+                exp: "Kuning telur (yolk) dan putih telur (albumen) menyediakan cadangan gizi lengkap bagi embrio di dalam telur."
+            },
+            {
+                cat: "Pertumbuhan & Perkembangan",
+                q: "Bayi yang baru lahir belum dapat berjalan. Seiring bertambahnya usia, otot dan saraf kakinya semakin kuat sehingga ia bisa merangkak dan berjalan. Hal ini menunjukkan proses...",
+                opt: ["Pertumbuhan fisik saja", "Perkembangan kemampuan dan fungsi organ", "Metamorfosis tidak sempurna", "Regenerasi sel mati"],
+                ans: 1,
+                exp: "Peningkatan kemampuan motorik (merangkak/berjalan) merupakan contoh bentuk perkembangan organ dan fungsi tubuh."
+            },
+
+            // Category 4: Wujud Benda (31-40)
+            {
+                cat: "Wujud Benda & Perubahannya",
+                q: "Benda padat memiliki sifat khas, yaitu...",
+                opt: ["Bentuk dan volumenya selalu tetap jika tidak diberi gaya luar", "Bentuknya berubah-ubah mengikuti wadahnya", "Volumenya selalu berubah mengisi seluruh ruangan", "Dapat mengalir ke tempat yang lebih rendah"],
+                ans: 0,
+                exp: "Benda padat memiliki struktur partikel rapat sehingga bentuk dan volumenya selalu tetap."
+            },
+            {
+                cat: "Wujud Benda & Perubahannya",
+                q: "Ketika kamu memasukkan air ke dalam wadah berbentuk mangkuk, bentuk air menyerupai mangkuk. Sifat zat cair tersebut adalah...",
+                opt: ["Bentuk tetap, volume berubah", "Bentuk berubah sesuai wadah, volume tetap", "Bentuk dan volume selalu berubah", "Bentuk dan volume selalu tetap"],
+                ans: 1,
+                exp: "Zat cair memiliki sifat khas yaitu bentuknya menyesuaikan tempat/wadahnya, tetapi volumenya konstan."
+            },
+            {
+                cat: "Wujud Benda & Perubahannya",
+                q: "Balon dapat mengembang besar saat ditiup karena zat di dalamnya menekan ke segala arah. Zat yang mengisi balon tersebut berwujud...",
+                opt: ["Padat", "Cair", "Gas", "Plasma"],
+                ans: 2,
+                exp: "Gas mengisi seluruh ruangan wadahnya dan memberikan tekanan ke segala arah."
+            },
+            {
+                cat: "Wujud Benda & Perubahannya",
+                q: "Es batu yang dibiarkan di dalam gelas pada suhu ruang lama-kelamaan berubah menjadi air. Perubahan wujud dari padat menjadi cair ini disebut...",
+                opt: ["Membeku", "Mencair/Meleleh", "Menguap", "Mengembun"],
+                ans: 1,
+                exp: "Mencair/meleleh adalah proses perubahan wujud dari zat padat menjadi cair akibat menyerap panas."
+            },
+            {
+                cat: "Wujud Benda & Perubahannya",
+                q: "Peristiwa terbentuknya titik-titik air di bagian luar gelas yang berisi es teh dingin disebabkan oleh perubahan wujud gas uap air di udara menjadi cair yang disebut...",
+                opt: ["Menguap", "Menyublim", "Mengembun", "Membeku"],
+                ans: 2,
+                exp: "Mengembun (kondensasi) terjadi ketika uap air (gas) bersentuhan dengan permukaan dingin sehingga menjadi zat cair."
+            },
+            {
+                cat: "Wujud Benda & Perubahannya",
+                q: "Ibu memasukkan air ke dalam wadah dan menaruhnya di dalam freezer kulkas hingga berubah menjadi es padat. Perubahan wujud dari cair menjadi padat dinamakan...",
+                opt: ["Membeku", "Mencair", "Menguap", "Menyublim"],
+                ans: 0,
+                exp: "Membeku adalah perubahan wujud dari zat cair menjadi padat karena pelepasan panas/pendinginan."
+            },
+            {
+                cat: "Wujud Benda & Perubahannya",
+                q: "Kapur barus (kamper) yang diletakkan di dalam lemari pakaian lama-kelamaan mengecil dan habis tanpa meninggalkan genangan air. Perubahan wujud dari padat langsung menjadi gas ini dinamakan...",
+                opt: ["Menguap", "Menyublim", "Mengkristal", "Mengembun"],
+                ans: 1,
+                exp: "Menyublim adalah perubahan wujud zat dari fase padat secara langsung menjadi fase gas."
+            },
+            {
+                cat: "Wujud Benda & Perubahannya",
+                q: "Air di dalam panci yang dipanaskan terus-menerus hingga mendidih akan berkurang jumlahnya karena sebagian air berubah menjadi uap. Perubahan wujud ini disebut...",
+                opt: ["Menguap", "Mencair", "Mengembun", "Membeku"],
+                ans: 0,
+                exp: "Menguap adalah perubahan wujud dari zat cair menjadi uap/gas akibat penambahan energi panas."
+            },
+            {
+                cat: "Wujud Benda & Perubahannya",
+                q: "Kelompok benda di bawah ini yang seluruhnya berwujud cairan pada suhu ruang adalah...",
+                opt: ["Sirup, minyak goreng, dan kecap", "Batu, kayu, dan besi", "Asap, angin, dan oksigen", "Gula, garam, dan es batu"],
+                ans: 0,
+                exp: "Sirup, minyak goreng, dan kecap berwujud cair pada suhu kamar."
+            },
+            {
+                cat: "Wujud Benda & Perubahannya",
+                q: "Benda yang bersifat tembus cahaya sehingga kita dapat melihat jelas objek di balik benda tersebut adalah benda...",
+                opt: ["Buram (translucent)", "Bening/Transparan (transparent)", "Gelap/Kedap cahaya (opaque)", "Elastis"],
+                ans: 1,
+                exp: "Benda transparan (bening) meneruskan sebagian besar gelombang cahaya sehingga benda di belakangnya terlihat jelas."
+            }
+        ];
+
+        let currentIdx = 0;
+        let score = 0;
+        let userAnswers = new Array(quizData.length).fill(null);
+
+        // Elements
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        const badgeScore = document.getElementById('badge-score');
+        const headerScore = document.getElementById('header-score');
+
+        const currentNumEl = document.getElementById('current-question-num');
+        const categoryTag = document.getElementById('category-tag');
+        const progressBar = document.getElementById('progress-bar');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const explanationBox = document.getElementById('explanation-box');
+        const feedbackIcon = document.getElementById('feedback-icon');
+        const feedbackTitle = document.getElementById('feedback-title');
+        const explanationText = document.getElementById('explanation-text');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        function startQuiz() {
+            welcomeScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            badgeScore.classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const q = quizData[currentIdx];
+            currentNumEl.textContent = currentIdx + 1;
+            categoryTag.textContent = q.cat;
+            questionText.textContent = q.q;
+
+            // Update Progress Bar
+            const progress = ((currentIdx + 1) / quizData.length) * 100;
+            progressBar.style.width = ${progress}%;
+
+            optionsContainer.innerHTML = '';
+            explanationBox.classList.add('hidden');
+
+            const savedAns = userAnswers[currentIdx];
+
+            q.opt.forEach((optionStr, optionIdx) => {
+                const btn = document.createElement('button');
+                btn.className = `w-full text-left p-4 rounded-xl border transition-all text-xs md:text-sm font-medium flex items-center justify-between ${
+                    savedAns !== null
+                        ? optionIdx === q.ans
+                            ? 'bg-emerald-950/80 border-emerald-500 text-emerald-200'
+                            : optionIdx === savedAns
+                            ? 'bg-rose-950/80 border-rose-500 text-rose-200'
+                            : 'bg-slate-900/40 border-slate-700/50 text-slate-500 opacity-50'
+                        : 'bg-slate-900/60 border-slate-700 hover:border-indigo-500/80 hover:bg-slate-800 text-slate-200 shadow-sm'
+                }`;
+
+                btn.innerHTML = `
+                    <span>${String.fromCharCode(65 + optionIdx)}. ${optionStr}</span>
+                    ${savedAns !== null && optionIdx === q.ans ? '<span class="text-emerald-400 font-bold">✓</span>' : ''}
+                    ${savedAns !== null && optionIdx === savedAns && savedAns !== q.ans ? '<span class="text-rose-400 font-bold">✕</span>' : ''}
+                `;
+
+                if (savedAns === null) {
+                    btn.onclick = () => handleSelect(optionIdx);
+                } else {
+                    btn.disabled = true;
+                }
+
+                optionsContainer.appendChild(btn);
+            });
+
+            if (savedAns !== null) {
+                showExplanation(savedAns === q.ans);
+            }
+
+            prevBtn.disabled = currentIdx === 0;
+            nextBtn.textContent = currentIdx === quizData.length - 1 ? 'Lihat Hasil 🏆' : 'Selanjutnya →';
+        }
+
+        function handleSelect(selectedIdx) {
+            const q = quizData[currentIdx];
+            userAnswers[currentIdx] = selectedIdx;
+
+            const isCorrect = selectedIdx === q.ans;
+            if (isCorrect) {
+                score++;
+                headerScore.textContent = score;
+            }
+
+            loadQuestion();
+        }
+
+        function showExplanation(isCorrect) {
+            const q = quizData[currentIdx];
+            explanationBox.classList.remove('hidden');
+
+            if (isCorrect) {
+                explanationBox.className = "p-4 rounded-xl border bg-emerald-950/40 border-emerald-500/40 text-emerald-200 mb-6";
+                feedbackIcon.textContent = "🎉";
+                feedbackTitle.textContent = "Jawaban Tepat!";
+            } else {
+                explanationBox.className = "p-4 rounded-xl border bg-rose-950/40 border-rose-500/40 text-rose-200 mb-6";
+                feedbackIcon.textContent = "💡";
+                feedbackTitle.textContent = Jawaban Kurang Tepat (Kunci: ${String.fromCharCode(65 + q.ans)});
+            }
+
+            explanationText.textContent = q.exp;
+        }
+
+        function nextQuestion() {
+            if (currentIdx < quizData.length - 1) {
+                currentIdx++;
+                loadQuestion();
+            } else {
+                finishQuiz();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentIdx > 0) {
+                currentIdx--;
+                loadQuestion();
+            }
+        }
+
+        function finishQuiz() {
+            quizScreen.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+
+            document.getElementById('correct-count').textContent = ${score} / 40;
+            const percentage = Math.round((score / quizData.length) * 100);
+            document.getElementById('final-percentage').textContent = ${percentage}%;
+
+            const evalEl = document.getElementById('result-eval');
+            if (percentage >= 85) {
+                evalEl.textContent = "Luar biasa! Pemahaman materi olimpiade sains kamu sangat memuaskan! 🌟";
+            } else if (percentage >= 60) {
+                evalEl.textContent = "Hasil yang bagus! Terus latih materi yang masih keliru agar makin mantap! 👍";
+            } else {
+                evalEl.textContent = "Tetap semangat! Pelajari kembali pembahasannya dan coba ulangi kuis ini! 💪";
+            }
+        }
+
+        function restartQuiz() {
+            currentIdx = 0;
+            score = 0;
+            userAnswers = new Array(quizData.length).fill(null);
+            headerScore.textContent = '0';
+
+            resultScreen.classList.add('hidden');
+            welcomeScreen.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
