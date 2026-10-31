@@ -1,23 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testing Github page</title>
-    <!-- Include Tailwind CSS via CDN -->
+    <title>Kuis Capybara • Olimpiade Sains Kelas 3 SD</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Baloo 2', system-ui, sans-serif; }
+        @keyframes bob { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
+        @media (prefers-reduced-motion: reduce) {
+            .capy-bob { animation: none !important; }
+            .capy-card { transition: none !important; }
+        }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-800 flex flex-col items-center justify-center min-h-screen m-0 p-4">
-    
-    <div class="text-center">
-        <!-- Responsive heading size -->
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">Testing Github page</h1>
-        
-        <!-- Responsive button style -->
-        <a href="soal1/index.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg shadow-md transition-colors duration-200">
-            soal kelas 3 sd
-        </a>
-    </div>
+<body class="min-h-screen m-0 bg-[#FDF6EC] text-[#4A342A] flex flex-col items-center justify-center p-5">
+
+    <main class="w-full max-w-3xl text-center">
+        <!-- Capybara with yuzu -->
+        <svg class="capy-bob w-40 h-40 mx-auto drop-shadow-[0_10px_0_rgba(74,52,42,0.08)]"
+             viewBox="0 0 200 180" role="img" aria-label="Ilustrasi capybara lucu dengan buah yuzu">
+            <circle cx="52" cy="54" r="16" fill="#8B5E3C"/>
+            <circle cx="148" cy="54" r="16" fill="#8B5E3C"/>
+            <rect x="30" y="42" width="140" height="120" rx="58" fill="#A9744F"/>
+            <ellipse cx="100" cy="128" rx="52" ry="34" fill="#C99A6E"/>
+            <ellipse cx="58" cy="120" rx="10" ry="6" fill="#D97B72" opacity="0.45"/>
+            <ellipse cx="142" cy="120" rx="10" ry="6" fill="#D97B72" opacity="0.45"/>
+            <circle cx="72" cy="96" r="7" fill="#2E1F16"/>
+            <circle cx="128" cy="96" r="7" fill="#2E1F16"/>
+            <ellipse cx="88" cy="122" rx="4" ry="3" fill="#5B3D28"/>
+            <ellipse cx="112" cy="122" rx="4" ry="3" fill="#5B3D28"/>
+            <path d="M92 136 q8 8 16 0" stroke="#5B3D28" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <circle cx="150" cy="44" r="16" fill="#F2B33D"/>
+            <path d="M150 28 q12 -8 18 2" stroke="#7C9473" stroke-width="4" fill="none" stroke-linecap="round"/>
+        </svg>
+
+        <h1 class="mt-4 text-3xl sm:text-5xl font-extrabold tracking-tight">Halo, Capybara! 🌿</h1>
+        <p class="mt-2 text-base sm:text-lg text-[#8A6A57]">
+            Pilih kuis dan belajar santai — pelan tapi pasti, seperti capybara.
+        </p>
+
+        <!-- Quiz cards -->
+        <div class="mt-9 grid gap-5 sm:grid-cols-2 text-left">
+            <a href="soal1/"
+               class="capy-card group block rounded-3xl border-2 border-[#E7D3B8] bg-white/90 p-6 shadow-[0_8px_0_#E7D3B8] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_13px_0_#E7D3B8] focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-[#B08968]">
+                <span class="text-4xl">🔬</span>
+                <h2 class="mt-3 text-2xl font-extrabold">Soal I</h2>
+                <p class="mt-1 text-sm text-[#8A6A57] leading-relaxed">
+                    Ciri makhluk hidup, pengelompokan, pertumbuhan &amp; perkembangan, wujud benda.
+                </p>
+                <span class="mt-5 inline-flex items-center gap-2 rounded-full bg-[#7C9473] px-5 py-2 text-sm font-bold text-white transition group-hover:gap-3">
+                    Mulai belajar <span aria-hidden="true">→</span>
+                </span>
+            </a>
+
+            <a href="soal1/?quiz=quizData2"
+               class="capy-card group block rounded-3xl border-2 border-[#F0DCC0] bg-[#FFF9EF] p-6 shadow-[0_8px_0_#F0DCC0] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_13px_0_#F0DCC0] focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-[#B08968]">
+                <span class="text-4xl">🧪</span>
+                <h2 class="mt-3 text-2xl font-extrabold">Soal II</h2>
+                <p class="mt-1 text-sm text-[#8A6A57] leading-relaxed">
+                    Wujud benda, ciri-ciri makhluk hidup, pengelompokkan, pertumbuhan dan perkembangan.
+                </p>
+                <span class="mt-5 inline-flex items-center gap-2 rounded-full bg-[#B08968] px-5 py-2 text-sm font-bold text-white transition group-hover:gap-3">
+                    Mulai belajar <span aria-hidden="true">→</span>
+                </span>
+            </a>
+        </div>
+
+        <p class="mt-10 text-xs text-[#A98B77]">Dibuat untuk belajar santai • 🦫 capybara vibes</p>
+    </main>
 
 </body>
 </html>

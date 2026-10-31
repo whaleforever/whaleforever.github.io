@@ -1,0 +1,392 @@
+[
+{
+    "id": 1,
+    "cat": "Wujud Benda",
+    "q": "Jenis dari benda padat ada yang keras dan lunak. Contoh benda padat lunak yang dapat dengan mudah diubah bentuknya adalah...",
+    "opt": ["Batu", "Kaca", "Plastisin", "Pensil"],
+    "ans": 2,
+    "exp": "Plastisin (lilin mainan) dan tanah liat merupakan contoh benda padat lunak. Benda padat lunak dapat diubah bentuknya jika diberi gaya atau tekanan."
+  },
+  {
+    "id": 2,
+    "cat": "Wujud Benda",
+    "q": "Bentuknya selalu mengikuti bentuk wadahnya, tetapi volumenya selalu tetap dan mudah mengalir. Ini merupakan sifat dari benda...",
+    "opt": ["Padat", "Cair", "Gas", "Keras"],
+    "ans": 1,
+    "exp": "Benda cair memiliki sifat khusus: bentuknya berubah menyesuaikan tempat/wadahnya, tetapi volumenya tetap dan permukaannya selalu tenang datar serta mengalir dari tempat tinggi ke tempat rendah."
+  },
+  {
+    "id": 3,
+    "cat": "Wujud Benda",
+    "q": "Apa yang terjadi jika air minum yang berada di dalam gelas dituangkan ke dalam botol minum?",
+    "opt": [
+      "Bentuk air berubah menyesuaikan bentuk botol, volumenya tetap",
+      "Volume air bertambah karena botol lebih besar",
+      "Bentuk air tetap seperti gelas, volumenya berkurang",
+      "Air membeku menjadi benda padat"
+    ],
+    "ans": 0,
+    "exp": "Sifat benda cair adalah bentuknya menyesuaikan tempat baru (botol), sedangkan volumenya (banyaknya air) tidak berubah atau tetap."
+  },
+  {
+    "id": 4,
+    "cat": "Wujud Benda",
+    "q": "Jika minyak wangi (parfum) dibiarkan terbuka di dalam ruangan, cairan parfum akan cepat habis karena mengalami perubahan wujud dari...",
+    "opt": ["Cair menjadi padat", "Cair menjadi gas", "Gas menjadi cair", "Padat menjadi gas"],
+    "ans": 1,
+    "exp": "Perubahan wujud dari zat cair menjadi gas dinamakan menguap. Parfum mengandung zat volatil yang cepat menguap ke udara saat wadahnya terbuka."
+  },
+  {
+    "id": 5,
+    "cat": "Ciri-ciri Makhluk Hidup",
+    "q": "Tumbuhan putri malu akan menguncupkan daun-daunnya jika disentuh. Peristiwa ini membuktikan bahwa tumbuhan memiliki ciri...",
+    "opt": ["Memerlukan makanan", "Peka terhadap rangsangan (iritabilitas)", "Bernapas dengan paru-paru", "Berkembang biak"],
+    "ans": 1,
+    "exp": "Peka terhadap rangsangan (iritabilitas) adalah kemampuan makhluk hidup menanggapi rangsangan dari luar. Pada putri malu, sentuhan fisika memicu respon penutupan daun."
+  },
+  {
+    "id": 6,
+    "cat": "Pengelompokkan Makhluk Hidup",
+    "q": "Tumbuhan hijau dapat membuat makanannya sendiri melalui fotosintesis dengan bantuan cahaya matahari. Oleh karena itu tumbuhan dinamakan...",
+    "opt": ["Konsumen", "Pengurai", "Autotrof (Produsen)", "Karnivora"],
+    "ans": 2,
+    "exp": "Organisme yang dapat membuat makanan sendiri dinamakan Autotrof (Produsen), sedangkan hewan dan manusia tergolong heterotrof karena bergantung pada makhluk lain."
+  },
+  {
+    "id": 7,
+    "cat": "Pertumbuhan dan Perkembangan",
+    "q": "Penyu betina menimbun telurnya di pasir pantai. Setelah menetas, anak penyu (tukik) merayap ke laut dan tumbuh menjadi penyu dewasa. Hal ini menunjukkan makhluk hidup...",
+    "opt": [
+      "Bernapas dan bergerak cepat",
+      "Berkembang biak dan mengalami pertumbuhan",
+      "Memerlukan rumah untuk tinggal",
+      "Mempunyai tubuh berdarah dingin"
+    ],
+    "ans": 1,
+    "exp": "Bertelur merupakan cara berkembang biak (reproduksi) untuk melestarikan keturunan, dan tukik bertambah besar menjadi penyu dewasa menunjukkan proses pertumbuhan dan perkembangan."
+  },
+  {
+    "id": 8,
+    "cat": "Pengelompokkan Makhluk Hidup",
+    "q": "Pohon mangga dan pohon rambutan memiliki sistem perakaran utama yang tebal dan menancap dalam ke tanah. Jenis akar ini dinamakan akar...",
+    "opt": ["Serabut", "Tunggang", "Gantung", "Napas"],
+    "ans": 1,
+    "exp": "Tumbuhan dikotil (berkeping dua) seperti mangga dan rambutan memiliki akar tunggang. Akar ini memiliki akar pokok yang besar dan bercabang."
+  },
+  {
+    "id": 9,
+    "cat": "Pengelompokkan Makhluk Hidup",
+    "q": "Perhatikan tumbuhan berikut: (1) Jagung, (2) Nanas, (3) Jahe, (4) Padi. Tumbuhan tersebut dikelompokkan ke dalam tumbuhan berkeping satu atau...",
+    "opt": ["Dikotil", "Monokotil", "Spora", "Gymnospermae"],
+    "ans": 1,
+    "exp": "Jagung, nanas, jahe, dan padi adalah contoh tumbuhan Monokotil (berkeping biji tunggal), memiliki ciri tulang daun sejajar/memanjang dan akar serabut."
+  },
+  {
+    "id": 10,
+    "cat": "Pertumbuhan dan Perkembangan",
+    "q": "Manakah kelompok hewan berikut yang semuanya mengalami metamorfosis sempurna dalam daur hidupnya?",
+    "opt": [
+      "Belalang, kecoak, jangkrik",
+      "Kupu-kupu, nyamuk, katak",
+      "Ayam, bebek, burung",
+      "Kucing, kambing, sapi"
+    ],
+    "ans": 1,
+    "exp": "Metamorfosis sempurna melalui 4 tahap (Telur -> Larva -> Pupa/Kepompong -> Dewasa/Imago) atau perubahan bentuk yang sangat beda tajam. Contohnya kupu-kupu, nyamuk, lalat, dan katak."
+  },
+  {
+    "id": 11,
+    "cat": "Pertumbuhan dan Perkembangan",
+    "q": "Pada daur hidup kupu-kupu, tahap kepompong (pupa) merupakan fase diam tidak makan tetapi terjadi...",
+    "opt": [
+      "Tempat bertelur bagi indukan",
+      "Perubahan struktur jaringan tubuh menjadi bentuk dewasa",
+      "Pertumbuhan ukuran paling cepat",
+      "Proses bernapas dengan insang"
+    ],
+    "ans": 1,
+    "exp": "Fase kepompong (pupa) adalah masa transformasi besar di mana organ-organ larva dirombak total menjadi jaringan dan organ tubuh kupu-kupu dewasa."
+  },
+  {
+    "id": 12,
+    "cat": "Ciri-ciri Makhluk Hidup",
+    "q": "Tempat terjadinya pertukaran gas oksigen (O2) dan karbon dioksida (CO2) di dalam paru-paru manusia adalah...",
+    "opt": ["Trakea", "Bronkus", "Alveolus", "Hidung"],
+    "ans": 2,
+    "exp": "Alveolus adalah gelembung-gelembung udara kecil berdinding tipis di paru-paru yang dikelilingi pembuluh darah tempat terjadinya pertukaran gas O2 dan CO2."
+  },
+  {
+    "id": 13,
+    "cat": "Pengelompokkan Makhluk Hidup",
+    "q": "Harimau, singa, dan burung elang dikelompokkan berdasarkan jenis makanannya sebagai hewan...",
+    "opt": ["Herbivora", "Karnivora", "Omnivora", "Insectivora"],
+    "ans": 1,
+    "exp": "Karnivora adalah golongan hewan pemakan daging/hewan lain. Ciri khasnya umumnya memiliki gigi taring tajam atau paruh serta cakar yang kuat."
+  },
+  {
+    "id": 14,
+    "cat": "Wujud Benda",
+    "q": "Ketika es dimasukkan ke dalam gelas kaca yang kering, dinding luar gelas menjadi basah oleh titik-titik air. Hal ini terjadi karena...",
+    "opt": [
+      "Es di dalam gelas menembus dinding kaca",
+      "Uap air di udara sekitar gelas yang dingin mengembun",
+      "Air es menguap lalu merembes keluar",
+      "Gelas mengalami kebocoran halus"
+    ],
+    "ans": 1,
+    "exp": "Peristiwa ini dinamakan mengembun (kondensasi). Udara sekitar gelas mengandung uap air gas. Ketika menyentuh dinding gelas yang dingin, uap air melepaskan kalor dan berubah wujud menjadi bintik air cair."
+  },
+  {
+    "id": 15,
+    "cat": "Wujud Benda",
+    "q": "Manakah kelompok benda berikut yang semuanya akan mencair jika dipanaskan di atas kompor?",
+    "opt": [
+      "Cokelat batang, mentega, dan es batu",
+      "Batu, kayu, dan besi",
+      "Kertas, kain, dan tepung",
+      "Minyak goreng, air, dan kecap"
+    ],
+    "ans": 0,
+    "exp": "Mencair adalah perubahan wujud dari padat menjadi cair akibat menerima panas. Cokelat, mentega, dan es batu awalnya berwujud padat dan meleleh/mencair bila dipanaskan."
+  },
+  {
+    "id": 16,
+    "cat": "Ciri-ciri Makhluk Hidup",
+    "q": "Tanaman hias dalam pot diletakkan di dekat jendela kamar. Setelah beberapa hari, batang tanaman membengkok ke arah luar jendela. Hal ini menunjukkan tumbuhan...",
+    "opt": [
+      "Memerlukan oksigen untuk bernapas",
+      "Tumbuh menanggapi arah datangnya cahaya matahari (fototropisme)",
+      "Mencari tempat berteduh dari hujan",
+      "Mengalami metamorfosis"
+    ],
+    "ans": 1,
+    "exp": "Gerak tumbuhan yang membengkok menuju ke arah datangnya cahaya disebut fototropisme positif. Ini bukti bahwa tumbuhan merespon rangsangan cahaya."
+  },
+  {
+    "id": 17,
+    "cat": "Pengelompokkan Makhluk Hidup",
+    "q": "Katak dapat hidup di air saat berudu (bernapas dengan insang) dan hidup di darat saat dewasa (bernapas dengan paru-paru dan kulit). Katak digolongkan sebagai hewan...",
+    "opt": ["Reptil", "Aves", "Amfibi", "Mamalia"],
+    "ans": 2,
+    "exp": "Amfibi adalah kelompok hewan bertulang belakang (vertebrata) yang hidup di dua alam (air dan darat) selama tahapan daur hidupnya."
+  },
+  {
+    "id": 18,
+    "cat": "Wujud Benda",
+    "q": "Benda padat memiliki sifat khas yaitu...",
+    "opt": [
+      "Bentuk dan volumenya selalu tetap",
+      "Bentuk berubah-ubah sesuai wadahnya",
+      "Memenuhi seluruh ruangan yang ada",
+      "Mudah mengalir ke tempat rendah"
+    ],
+    "ans": 0,
+    "exp": "Ciri utama benda padat adalah bentuk dan volumenya selalu tetap meskipun dipindahkan ke wadah yang berbeda-beda."
+  },
+  {
+    "id": 19,
+    "cat": "Ciri-ciri Makhluk Hidup",
+    "q": "Alat pernapasan khusus pada serangga berupa pembuluh-pembuluh halus yang menyalurkan oksigen langsung ke seluruh tubuh disebut...",
+    "opt": ["Insang", "Paru-paru", "Trakea", "Kulit basah"],
+    "ans": 2,
+    "exp": "Trakea adalah sistem tabung pembuluh udara pada serangga yang bermuara di lubang-lubang kecil bernama spirakel di samping tubuhnya."
+  },
+  {
+    "id": 20,
+    "cat": "Ciri-ciri Makhluk Hidup",
+    "q": "Burung memiliki organ pernapasan tambahan berupa pundi-pundi udara (kantung udara) yang sangat berguna untuk...",
+    "opt": [
+      "Mencerna makanan berbiji keras",
+      "Menyimpan cadangan oksigen saat terbang",
+      "Menjaga kestabilan saat berenang",
+      "Menghasilkan suara yang nyaring"
+    ],
+    "ans": 1,
+    "exp": "Kantung udara (sakus pneumatikus) pada burung berfungsi menyimpan udara cadangan sehingga burung tetap mendapat oksigen saat mengepakkan sayap terbang."
+  },
+  {
+    "id": 21,
+    "cat": "Wujud Benda",
+    "q": "Perubahan wujud zat padat menjadi gas tanpa melalui fase cair terlebih dahulu disebut...",
+    "opt": ["Menguap", "Mencair", "Menyublim", "Mengembun"],
+    "ans": 2,
+    "exp": "Menyublim adalah perubahan wujud dari padat langsung menjadi gas. Contohnya adalah kamper (kapur barus) yang makin lama makin habis di dalam lemari."
+  },
+  {
+    "id": 22,
+    "cat": "Pertumbuhan dan Perkembangan",
+    "q": "Urutan pertumbuhan dan perkembangan pada tanaman berbunga yang benar diawali dari...",
+    "opt": [
+      "Biji -> Kecambah -> Tumbuhan Muda -> Tumbuhan Dewasa",
+      "Bunga -> Biji -> Buah -> Akar",
+      "Tumbuhan Dewasa -> Biji -> Kecambah -> Bunga",
+      "Kecambah -> Biji -> Daun -> Akar"
+    ],
+    "ans": 0,
+    "exp": "Daur hidup tumbuhan berbiji dimulai dari biji yang berkecambah (muncul akar dan tunas), tumbuh menjadi tumbuhan muda, lalu membesar jadi tumbuhan dewasa hingga berbunga dan berbuah."
+  },
+  {
+    "id": 23,
+    "cat": "Pengelompokkan Makhluk Hidup",
+    "q": "Paus dan lumba-lumba hidup di laut, namun keduanya berkembang biak dengan cara melahirkan dan menyusui anaknya. Oleh sebab itu paus tergolong...",
+    "opt": ["Ikan (Pisces)", "Amfibi", "Mamalia", "Reptil"],
+    "ans": 2,
+    "exp": "Meskipun hidup di air, paus dan lumba-lumba adalah Mamalia air karena bernapas dengan paru-paru, melahirkan anak (vivipar), dan menyusui."
+  },
+  {
+    "id": 24,
+    "cat": "Ciri-ciri Makhluk Hidup",
+    "q": "Tumbuhan mengeluarkan zat sisa berupa oksigen dari fotosintesis dan uap air melalui lubang-lubang kecil di bawah permukaan daun yang disebut...",
+    "opt": ["Klorofil", "Stomata", "Batang", "Pori-pori lentisel"],
+    "ans": 1,
+    "exp": "Stomata (mulut daun) adalah celah mikro pada daun tempat terjadinya pertukaran gas O2, CO2, serta pengeluaran uap air (transpirasi)."
+  },
+  {
+    "id": 25,
+    "cat": "Wujud Benda",
+    "q": "Gas memiliki sifat dapat mengisi seluruh ruangan yang ditempatinya. Contoh pemanfaatan sifat gas dalam kehidupan sehari-hari adalah...",
+    "opt": [
+      "Mengisi udara pada ban sepeda atau balon",
+      "Membuat cetakan agar-agar",
+      "Mengalirkan air di selokan",
+      "Menumpuk balok kayu"
+    ],
+    "ans": 0,
+    "exp": "Gas menekan ke segala arah dan mengisi seluruh ruang kosong dalam wadahnya. Hal ini dimanfaatkan saat memompa ban kendaraan atau menggelembungkan balon."
+  },
+  {
+    "id": 26,
+    "cat": "Pertumbuhan dan Perkembangan",
+    "q": "Hewan ovipar adalah hewan yang berkembang biak dengan cara bertelur. Contoh hewan yang tergolong ovipar adalah...",
+    "opt": ["Kucing dan Anjing", "Ayam, Bebek, dan Burung", "Sapi dan Kambing", "Kelinci dan Tikus"],
+    "ans": 1,
+    "exp": "Ovipar berasal dari kata 'ovum' (telur). Unggas seperti ayam, bebek, burung, serta ikan dan reptil bertelur untuk berkembang biak."
+  },
+  {
+    "id": 27,
+    "cat": "Pertumbuhan dan Perkembangan",
+    "q": "Perbedaan utama daur hidup hewan yang mengalami metamorfosis tidak sempurna dibanding metamorfosis sempurna adalah...",
+    "opt": [
+      "Tidak melewati tahap pupa (kepompong)",
+      "Melewati tahap telur yang sangat banyak",
+      "Berubah menjadi hewan air",
+      "Memiliki sayap sejak lahir"
+    ],
+    "ans": 0,
+    "exp": "Metamorfosis tidak sempurna hanya melalui 3 tahap (Telur -> Nimfa -> Dewasa) tanpa ada fase kepompong/pupa. Bentuk nimfa mirip dengan bentuk dewasanya."
+  },
+  {
+    "id": 28,
+    "cat": "Pengelompokkan Makhluk Hidup",
+    "q": "Akar serabut berbentuk seperti serabut halus dan berukuran relatif sama besar. Tumbuhan yang memiliki akar serabut adalah...",
+    "opt": ["Pohon Mangga", "Pohon Durian", "Padi dan Kelapa", "Pohon Mahoni"],
+    "ans": 2,
+    "exp": "Tumbuhan monokotil seperti padi, jagung, dan pohon kelapa memiliki sistem akar serabut."
+  },
+  {
+    "id": 29,
+    "cat": "Wujud Benda",
+    "q": "Peristiwa pembuatan es batu di dalam freezer lemari es merupakan contoh perubahan wujud zat dari...",
+    "opt": ["Cair menjadi padat (Membeku)", "Padat menjadi cair (Mencair)", "Cair menjadi gas (Menguap)", "Gas menjadi padat (Mengkristal)"],
+    "ans": 0,
+    "exp": "Membeku adalah proses perubahan wujud zat cair menjadi padat karena melepaskan kalor/panas (suhu dingin)."
+  },
+  {
+    "id": 30,
+    "cat": "Ciri-ciri Makhluk Hidup",
+    "q": "Makhluk hidup membutuhkan makanan untuk...",
+    "opt": [
+      "Menambah berat baju yang dipakai",
+      "Memperoleh energi untuk beraktivitas dan tumbuh",
+      "Mengubah warna kulit",
+      "Mencegah udara masuk ke tubuh"
+    ],
+    "ans": 1,
+    "exp": "Makanan diolah tubuh menjadi zat nutrisi dan sumber energi kimia yang diperlukan untuk metabolisme, bergerak, serta pertumbuhan sel tubuh."
+  },
+  {
+    "id": 31,
+    "cat": "Pengelompokkan Makhluk Hidup",
+    "q": "Ayam, musang, dan manusia memakan makanan baik yang berasal dari tumbuhan maupun hewan. Pengelompokkan pemakan segala ini disebut...",
+    "opt": ["Herbivora", "Karnivora", "Omnivora", "Insectivora"],
+    "ans": 2,
+    "exp": "Omnivora adalah organisme pemakan segala (tumbuhan dan daging/hewan lain)."
+  },
+  {
+    "id": 32,
+    "cat": "Wujud Benda",
+    "q": "Manakah di bawah ini peristiwa perubahan wujud yang membutuhkan atau menyerap kalor (panas)?",
+    "opt": [
+      "Membeku dan mengembun",
+      "Mencair dan menguap",
+      "Mengembun dan mengkristal",
+      "Membeku dan mengkristal"
+    ],
+    "ans": 1,
+    "exp": "Mencair (padat -> cair) dan menguap (cair -> gas) memerlukan kalor/panas dari lingkungannya agar ikatan molekulnya renggang."
+  },
+  {
+    "id": 33,
+    "cat": "Ciri-ciri Makhluk Hidup",
+    "q": "Alat pernapasan pada cacing tanah agar dapat mengambil oksigen dari tanah adalah...",
+    "opt": ["Paru-paru buku", "Permukaan kulit yang basah dan lembap", "Insang luar", "Trakea"],
+    "ans": 1,
+    "exp": "Cacing tanah tidak memiliki organ pernapasan khusus. Oksigen berdifusi masuk langsung melalui kapiler darah di bawah permukaan kulitnya yang selalu basah berlendir."
+  },
+  {
+    "id": 34,
+    "cat": "Pertumbuhan dan Perkembangan",
+    "q": "Larva dari nyamuk yang sering kita jumpai berenang di genangan air bersih dinamakan...",
+    "opt": ["Ulat", "Jentik-jentik (tempayak)", "Belatung", "Berudu"],
+    "ans": 1,
+    "exp": "Tahap larva nyamuk disebut jentik-jentik. Jentik-jentik bergerak meliuk-liuk di dalam air sebelum berubah menjadi pupa nyamuk."
+  },
+  {
+    "id": 35,
+    "cat": "Wujud Benda",
+    "q": "Memanaskan mentega di atas wajan hingga meleleh lalu membiarkannya dingin kembali akan membuat mentega berubah wujud menjadi padat lagi. Peristiwa ini dinamakan...",
+    "opt": ["Menguap", "Membeku", "Mengembun", "Menyublim"],
+    "ans": 1,
+    "exp": "Mentega cair yang mendingin melepaskan kalor ke udara dingin sekitarnya sehingga ikatan molekulnya merapat kembali dan berubah menjadi padat (membeku)."
+  },
+  {
+    "id": 36,
+    "cat": "Pengelompokkan Makhluk Hidup",
+    "q": "Tumbuhan yang memiliki batang basah dan lunak karena banyak mengandung air adalah...",
+    "opt": ["Pohon Jati", "Pohon Kelapa", "Bayam dan Kangkung", "Pohon Mangga"],
+    "ans": 2,
+    "exp": "Bayam, kangkung, dan sawi merupakan kelompok tumbuhan berbatang basah (herbaseus) yang teksturnya lunak dan mudah dipatahkan."
+  },
+  {
+    "id": 37,
+    "cat": "Ciri-ciri Makhluk Hidup",
+    "q": "Manusia bertambah tinggi dan berat badannya dari usia bayi hingga remaja. Hal ini merupakan contoh dari proses...",
+    "opt": ["Fotosintesis", "Pertumbuhan", "Penguapan", "Iritabilitas"],
+    "ans": 1,
+    "exp": "Pertumbuhan adalah proses pertambahan ukuran, tinggi, volume, dan massa sel tubuh yang bersifat irreversible (tidak dapat kembali ke bentuk semula)."
+  },
+  {
+    "id": 38,
+    "cat": "Wujud Benda",
+    "q": "Asap pembakaran kayu, uap air dari cerek mendidih, dan angin adalah contoh benda bermuatan wujud...",
+    "opt": ["Padat", "Cair", "Gas", "Plasma"],
+    "ans": 2,
+    "exp": "Asap, uap air, dan udara (angin) tidak memiliki bentuk tetap dan memenuhi ruangan, yang merupakan sifat utama zat berwujud gas."
+  },
+  {
+    "id": 39,
+    "cat": "Pertumbuhan dan Perkembangan",
+    "q": "Hewan ovovivipar adalah hewan yang bertelur dan menetas di dalam tubuh induknya, lalu dilahirkan keluar. Contoh hewan ini adalah...",
+    "opt": ["Kucing dan Sapi", "Ayam dan Burung", "Beberapa jenis Ular dan Hiu", "Katak dan Lalat"],
+    "ans": 2,
+    "exp": "Ovovivipar adalah perkembangbiakan kombinasi bertelur-melahirkan. Telur berkembang di dalam tubuh betina hingga menetas internal, baru dikeluarkan seolah melahirkan (contoh: kadal tertentu, hiu, ular boa)."
+  },
+  {
+    "id": 40,
+    "cat": "Pengelompokkan Makhluk Hidup",
+    "q": "Hewan bersisik, berdarah dingin, dan bergerak merayap atau melata seperti ular, buaya, dan cicak termasuk dalam kelompok...",
+    "opt": ["Amfibi", "Reptil", "Mamalia", "Aves"],
+    "ans": 1,
+    "exp": "Reptil (hewan melata) memiliki kulit bersisik keras yang tahan air, bersifat poikiloterm (berdarah dingin), dan umumnya bernapas dengan paru-paru."
+  }
+]
