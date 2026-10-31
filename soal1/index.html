@@ -69,7 +69,7 @@
             </div>
 
             <div id="start-btn-container">
-                <button id="start-btn" onclick="startQuiz(false)" class="w-full sm:w-auto px-8 py-3.5 bg-[#7C9473] hover:bg-[#6A8362] text-white font-extrabold rounded-xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-[0_5px_0_#5A7153] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100 focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-[#B08968]">
+                <button id="start-btn" onclick="startQuiz(false)" disabled class="w-full sm:w-auto px-8 py-3.5 bg-[#7C9473] hover:bg-[#6A8362] text-white font-extrabold rounded-xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-[0_5px_0_#5A7153] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100 focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-[#B08968]">
                     Mulai Kuis Sekarang 🚀
                 </button>
             </div>
@@ -102,11 +102,13 @@
 
             <!-- Feedback / Explanation Box -->
             <div id="explanation-box" class="hidden p-4 rounded-xl border transition-all duration-200 mb-6">
-                <div class="flex items-center space-x-2 mb-1.5">
-                    <img id="feedback-icon" alt="" width="512" height="512" class="h-7 w-7 shrink-0">
-                    <h4 id="feedback-title" class="font-bold text-sm"></h4>
+                <div class="flex items-start gap-3">
+                    <img id="feedback-icon" alt="" width="512" height="512" class="h-14 w-14 shrink-0">
+                    <div class="min-w-0 flex-1">
+                        <h4 id="feedback-title" class="font-bold text-sm mb-1"></h4>
+                        <p id="explanation-text" class="text-xs md:text-sm leading-relaxed text-[#6B5445]"></p>
+                    </div>
                 </div>
-                <p id="explanation-text" class="text-xs md:text-sm leading-relaxed text-[#6B5445]"></p>
             </div>
 
             <!-- Navigation Controls -->
@@ -122,8 +124,8 @@
 
         <!-- Result Screen -->
         <div id="result-screen" class="hidden bg-white/90 border-2 border-[#E7D3B8] rounded-3xl p-6 md:p-10 text-center shadow-[0_10px_0_#E7D3B8]">
-            <div class="w-24 h-24 bg-[#FBF0D9] border-2 border-[#F0DCC0] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-inner">
-                <img src="../assets/capybara/capybara_celebrate.webp" alt="" width="512" height="512" class="h-20 w-20">
+            <div class="w-32 h-32 bg-[#FBF0D9] border-2 border-[#F0DCC0] rounded-3xl flex items-center justify-center mx-auto mb-4 shadow-inner">
+                <img src="../assets/capybara/capybara_celebrate.webp" alt="" width="512" height="512" class="h-28 w-28">
             </div>
             <h2 class="text-2xl font-extrabold text-[#4A342A] mb-1">Kuis Selesai!</h2>
             <p class="text-xs text-[#8A6A57] mb-6">Berikut adalah rekapitulasi hasil jawaban kamu:</p>
