@@ -9,6 +9,8 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
     </style>
+    <link rel="preload" as="image" href="../assets/capybara/capybara_happy.webp">
+    <link rel="preload" as="image" href="../assets/capybara/capybara_sad.webp">
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
 
@@ -97,7 +99,7 @@
             <!-- Feedback / Explanation Box -->
             <div id="explanation-box" class="hidden p-4 rounded-xl border transition-all duration-200 mb-6">
                 <div class="flex items-center space-x-2 mb-1.5">
-                    <span id="feedback-icon" class="text-lg"></span>
+                    <img id="feedback-icon" alt="" width="512" height="512" class="h-7 w-7 shrink-0">
                     <h4 id="feedback-title" class="font-bold text-sm"></h4>
                 </div>
                 <p id="explanation-text" class="text-xs md:text-sm leading-relaxed text-slate-300"></p>
@@ -116,8 +118,8 @@
 
         <!-- Result Screen -->
         <div id="result-screen" class="hidden bg-slate-800/80 border border-slate-700 rounded-2xl p-6 md:p-10 text-center shadow-2xl">
-            <div class="w-20 h-20 bg-amber-500/20 border border-amber-500/30 text-amber-400 rounded-2xl flex items-center justify-center mx-auto mb-4 text-3xl shadow-inner">
-                🏆
+            <div class="w-24 h-24 bg-amber-500/20 border border-amber-500/30 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-inner">
+                <img src="../assets/capybara/capybara_celebrate.webp" alt="" width="512" height="512" class="h-20 w-20">
             </div>
             <h2 class="text-2xl font-extrabold text-white mb-1">Kuis Selesai!</h2>
             <p class="text-xs text-slate-400 mb-6">Berikut adalah rekapitulasi hasil jawaban kamu:</p>
@@ -407,11 +409,11 @@
 
             if (isCorrect) {
                 explanationBox.className = "p-4 rounded-xl border bg-emerald-950/40 border-emerald-500/40 text-emerald-200 mb-6";
-                feedbackIcon.textContent = "🎉";
+                feedbackIcon.src = '../assets/capybara/capybara_happy.webp';
                 feedbackTitle.textContent = "Jawaban Tepat!";
             } else {
                 explanationBox.className = "p-4 rounded-xl border bg-rose-950/40 border-rose-500/40 text-rose-200 mb-6";
-                feedbackIcon.textContent = "💡";
+                feedbackIcon.src = '../assets/capybara/capybara_sad.webp';
                 feedbackTitle.textContent = `Jawaban Kurang Tepat (Kunci: ${String.fromCharCode(65 + q.ans)})`;
             }
 
